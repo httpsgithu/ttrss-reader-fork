@@ -7,7 +7,7 @@
         <item name="colorPrimary">@color/themeLightPrimary</item>
         <item name="colorPrimaryDark">@color/themeLightPrimaryDark</item>
         <item name="colorAccent">@color/themeLightAccent</item>
-        <item name="android:colorAccent" tools:targetApi="lollipop">@color/themeLightAccent</item>
+        <item name="android:colorAccent">@color/themeLightAccent</item>
         <item name="colorAccentDark">@color/themeLightAccentDark</item>
         <item name="colorBackground">@color/themeLightBackground</item>
         <item name="android:textColorPrimary">@color/themeLightTextColorPrimary</item>
@@ -28,7 +28,6 @@
         <!-- Attempt at fixing https://github.com/nilsbraden/ttrss-reader-fork/issues/425 -->
         <item name="actionMenuTextColor">@color/themeLightTextColor</item>
         <item name="android:actionMenuTextColor">@color/themeLightTextColor</item>
-
     </style>
 
     <style name="Theme.MyApp.White" parent="Theme.MyApp">

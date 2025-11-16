@@ -196,7 +196,7 @@ public class CategoryActivity extends MenuActivity implements IItemSelectedListe
 	}
 
 	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
+	public boolean onPrepareOptionsMenu(@NonNull Menu menu) {
 		boolean ret = super.onPrepareOptionsMenu(menu);
 		menu.removeItem(R.id.Menu_MarkFeedRead);
 

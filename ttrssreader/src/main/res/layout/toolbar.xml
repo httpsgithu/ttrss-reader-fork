@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimaryDark"
         android:contentInsetEnd="0dp"
+        android:fitsSystemWindows="true"
         android:contentInsetStart="0dp">
 
         <LinearLayout

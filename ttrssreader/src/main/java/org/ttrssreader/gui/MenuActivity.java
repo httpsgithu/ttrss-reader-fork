@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.content.res.Configuration;
+import android.database.CursorWindow;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -61,8 +62,14 @@ import org.ttrssreader.utils.AsyncTask;
 import org.ttrssreader.utils.PostMortemReportExceptionHandler;
 import org.ttrssreader.utils.Utils;
 
+import java.lang.reflect.Field;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
@@ -107,6 +114,14 @@ public abstract class MenuActivity extends MenuFlavorActivity implements IUpdate
 		super.onCreate(instance);
 		mDamageReport.initialize();
 		activity = this;
+
+		try {
+			Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+			field.setAccessible(true);
+			field.set(null, 100 * 1024 * 1024); //the 100MB is the new size
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		Controller.getInstance().setHeadless(false);
 		setContentView(getLayoutResource());
@@ -226,6 +241,22 @@ public abstract class MenuActivity extends MenuFlavorActivity implements IUpdate
 	private void initToolbar() {
 		m_Toolbar = findViewById(R.id.toolbar);
 		if (m_Toolbar != null) {
+			WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+			ViewCompat.setOnApplyWindowInsetsListener(m_Toolbar, (v, windowInsets) -> {
+				Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+				// Apply the insets as a margin to the view. Here the system is setting
+				// only the bottom, left, and right dimensions, but apply whichever insets are
+				// appropriate to your layout. You can also update the view padding
+				// if that's more appropriate.
+				ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+				mlp.leftMargin = insets.left;
+				mlp.topMargin = insets.top;
+				mlp.rightMargin = insets.right;
+				v.setLayoutParams(mlp);
+
+				return WindowInsetsCompat.CONSUMED;
+			});
 			setSupportActionBar(m_Toolbar);
 			m_Toolbar.setTitle(R.string.ApplicationName);
 			m_Toolbar.setVisibility(View.VISIBLE);

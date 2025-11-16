@@ -7,7 +7,7 @@
         <item name="colorPrimary">@color/themeDarkPrimary</item>
         <item name="colorPrimaryDark">@color/themeDarkPrimaryDark</item>
         <item name="colorAccent">@color/themeDarkAccent</item>
-        <item name="android:colorAccent" tools:targetApi="lollipop">@color/themeDarkAccent</item>
+        <item name="android:colorAccent">@color/themeDarkAccent</item>
         <item name="colorAccentDark">@color/themeDarkAccentDark</item>
         <item name="colorBackground">@color/themeDarkBackground</item>
         <item name="android:textColorPrimary">@color/themeDarkTextColorPrimary</item>

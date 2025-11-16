@@ -202,7 +202,7 @@ public class SubscribeActivity extends MenuActivity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(@NonNull Menu menu) {
 		if (super.onCreateOptionsMenu(menu)) {
 			menu.removeItem(R.id.Menu_Refresh);
 			menu.removeItem(R.id.Menu_MarkAllRead);

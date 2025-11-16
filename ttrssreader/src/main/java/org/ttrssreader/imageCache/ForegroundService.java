@@ -149,7 +149,7 @@ public class ForegroundService extends Service implements ICacheEndListener {
 	}
 
 	public void doStartForeground(int id, Notification notification) {
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
 			startForeground(id, notification);
 		} else {
 			startForeground(id, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);

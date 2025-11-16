@@ -15,8 +15,10 @@
   not, see http://www.gnu.org/licenses/.
   -->
 <resources>
-
     <string-array name="updates">
+	    <item>Version 1.97.9
+             * Bump new versions to stay in play store..
+             * Properly handle Edge-to-Edge mode of Android 15</item>
 	    <item>Version 1.97.8
              * Quick fix for #477 \"Rendering under status bar in Android 15\": disable edge-to-ege display for now</item>
 	    <item>Version 1.97.6
